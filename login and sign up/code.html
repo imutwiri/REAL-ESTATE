@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Login & Signup</title>
+    <style>
+        /* Basic reset and styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            width: 90%;
+            max-width: 400px;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .form-container h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container .link {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .form-container a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="loginForm">
+        <h2>Login Here</h2>
+        <input type="email" id="loginEmail" placeholder="Enter Email Here" required><br>
+        <input type="password" id="loginPassword" placeholder="Enter Password Here" required><br>
+        <button onclick="login()">Login</button>
+        <p class="link">Don't Have an Account? <a href="#" onclick="showSignup()">Sign up Here</a></p>
+    </div>
+
+    <div class="form-container" id="signupForm" style="display: none;">
+        <h2>Sign Up Here</h2>
+        <input type="email" id="signupEmail" placeholder="Enter Email Here" required><br>
+        <input type="password" id="signupPassword" placeholder="Enter Password Here" required><br>
+        <button onclick="signup()">Sign Up</button>
+        <p class="link">Already have an account? <a href="#" onclick="showLogin()">Login Here</a></p>
+    </div>
+
+    <script>
+        // Function to show the signup form
+        function showSignup() {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("signupForm").style.display = "block";
+        }
+
+        // Function to show the login form
+        function showLogin() {
+            document.getElementById("signupForm").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
+        }
+
+        // Mock login function
+        function login() {
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+            if (email && password) {
+                alert("Logged in successfully!");
+            } else {
+                alert("Please fill in all fields");
+            }
+        }
+
+        // Mock signup function
+        function signup() {
+            const email = document.getElementById("signupEmail").value;
+            const password = document.getElementById("signupPassword").value;
+            if (email && password) {
+                alert("Account created successfully!");
+                showLogin();
+            } else {
+                alert("Please fill in all fields");
+            }
+        }
+    </script>
+</body>
+</html>
